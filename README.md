@@ -62,11 +62,11 @@ roslaunch ogm2pgbm ogm2pgbm.launch map_file:=/root/workspace/map/OGM_empty.pgm.y
 ```
 The target bag file will be stored under `/root/.ros/ogm2pgbm_sensordata.bag`. By default, the demo bag will also be copied into this place. So you can also skip the second step if you want.
 
-3. After generating bagfiles, use cartographer to generate pbstream(offline mode, which will generate pbstream quite fast)
+3. After generating bagfiles, use cartographer to generate pbstream (offline mode, which will generate pbstream quite fast)
 ```
 roslaunch cartographer_ros ogm2pgbm_my_robot.launch bag_filename:=/root/.ros/ogm2pgbm_sensordata.bag
 ```
-You can also launch slam_toolbox. (There will be some error report in the terminal, just ignore them and wait for seconds.)
+You can also launch slam_toolbox. (There will be some error report in the terminal, just ignore them and wait for some seconds.)
 ```shell
 roslaunch slam_toolbox ogm2pgbm.launch bag_filename:=/root/.ros/ogm2pgbm_sensordata.bag
 ```
