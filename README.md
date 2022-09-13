@@ -16,7 +16,7 @@ Table of Contents
 
 
 # Intro
-This repo contains package `amcl`, `gmcl`, `cartographer` and `slamtoolbox`, so that you can use and compare their localization performance with a bagfile located in the mounted directory `~/workspace` easily. 
+This repo contains the packages `amcl`, `gmcl`, `cartographer` and `slamtoolbox`, so that they can be used and compared with a bagfile located in the mounted directory `~/workspace` easily. 
 
 Apart from the open source packages, it includes the following self-developed applications and scripts:
 
@@ -62,11 +62,11 @@ roslaunch ogm2pgbm ogm2pgbm.launch map_file:=/root/workspace/map/OGM_empty.pgm.y
 ```
 The target bag file will be stored under `/root/.ros/ogm2pgbm_sensordata.bag`. By default, the demo bag will also be copied into this place. So you can also skip the second step if you want.
 
-3. After generating bagfiles, use cartographer to generate pbstream(offline mode, which will generate pbstream quite fast)
+3. After generating bagfiles, use cartographer to generate pbstream (offline mode, which will generate pbstream quite fast)
 ```
 roslaunch cartographer_ros ogm2pgbm_my_robot.launch bag_filename:=/root/.ros/ogm2pgbm_sensordata.bag
 ```
-You can also launch slam_toolbox. (There will be some error report in the terminal, just ignore them and wait for seconds.)
+You can also launch slam_toolbox. (There will be some error report in the terminal, just ignore them and wait for some seconds.)
 ```shell
 roslaunch slam_toolbox ogm2pgbm.launch bag_filename:=/root/.ros/ogm2pgbm_sensordata.bag
 ```
