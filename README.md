@@ -16,7 +16,7 @@ Table of Contents
 
 
 # Intro
-This repo contains package `amcl`, `gmcl`, `cartographer` and `slamtoolbox`, so that you can use and compare their localization performance with a bagfile located in the mounted directory `~/workspace` easily. 
+This repo contains the packages `amcl`, `gmcl`, `cartographer` and `slamtoolbox`, so that they can be used and compared with a bagfile located in the mounted directory `~/workspace` easily. 
 
 Apart from the open source packages, it includes the following self-developed applications and scripts:
 
