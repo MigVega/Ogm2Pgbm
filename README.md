@@ -1,39 +1,44 @@
-# TODO
-- [ ] Add video tutorial.
+# OGM2PGBM: Occupancy Grid Map to Pose Graph-based Map for long-term 2D LiDAR-based localization
 
-# OGM2PGBM: Occupancy Grid Map to Pose Graph-based Map
+This repo contains the following two applications:
 
-Table of Contents
-=================
-
-* [Intro](#brief-intro)
-* [OGM2PGBM](#Ogm2pgbm)
-   * [Principle](#principle)
-   * [Usage](#usage)
-      * [Args](#args)
-      * [Step by step](#step-by-step)
-      * [Note](#note)
-* [GMCL_CARTO](#gmcl_carto)
-* [Citation](#citation)
-
-# Intro
-
-This repo contains the following application:
-
-- `OGM2PGBM`: generate pose graph-based maps on 2D occupancy grid maps (which can be created from an TLS Point cloud or a BIM/CAD model.
-This pose graph-based maps can be used for accurate localization in changing and dynamic environments as demostrated in our [paper.](https://publications.cms.bgu.tum.de/2022_ECPPM_Vega.pdf)
+1. `OGM2PGBM`: generate pose graph-based maps on 2D occupancy grid maps, which can be created from a TLS Point cloud or a BIM/CAD model.
+This pose graph-based maps can be used for accurate localization in changing and dynamic environments, as demostrated in our [paper][paper].
 
 The following figure shows an overview of the proposed open source method.
-![MethodSummary](./docs/MethodSummary.png)
+<p align="center">
+  <img src="./docs/MethodSummary.png" alt="drawing" width="600"/>
+</p>
 
-- `GMCL_CARTO`: conbine the fast global localization feature of GMCL with the more accurate pose tracking performance of Cartographer
+2. `GMCL & CARTO/SLAM_toolbox`: conbine the fast global localization feature of GMCL with the more accurate pose tracking performance of Cartographer/SLAM_toolbox
 
 Additionally, it includes  the packages `amcl`, `gmcl`, `cartographer` and `slam_toolbox`, so that they can be used and compared with a bagfile that should be located in the mounted directory `~/workspace` easily. 
 
 
-# OGM2PGBM
+## Table of Contents
+==================================
+- [Requirements: Install docker](#requirements-install-docker)
+* [OGM2PGBM](#ogm2pgbm)
+   * [Principle](#principle)
+   * [Running the code](#running-the-code)
+      * [Args](#args)
+      * [Step by step](#step-by-step)
+      * [Note](#note)
+* [GMCL & CARTO/SLAM_toolbox](#gmcl--cartoslam_toolbox)
+* [Citation](#citation)
+* [Reference projects](#reference-projects)
 
-## Principle
+
+## Requirements: Install docker
+
+If you plan to use our docker container you only need to
+install [docker][docker].
+
+If you **don't want to use docker** and you might see the content of the [docker file][docker_file] and install the respective dependencies on your local machine.
+
+## OGM2PGBM
+
+### Principle
 
 The workflow of OGM2PGBM is as follows, see the function `new_map_callback(self,  grid_map)` for details:
 
@@ -49,15 +54,16 @@ It produces `/tf`, `/clock`, `/odom`,  `/scan` topics with frame `robot_map`, `r
 
 Since `/tf` is needed, `python2.7` is used in this script. 
 
-## Usage
-### Args
+### Running the code
+
+#### Args
 This package is a standard ros package and can be launched with roslaunch command.
 
 args:
 - `map_file`: default value is `/root/workspace/map/OGM_empty.pgm.yaml`
 - `record`: default value is `false`, the recorded bag can be found at `/root/.ros/ogm2pgbm_sensordata.bag`
 
-### Step by step
+#### Step by step
 0. First clone the repository.
 
 ```shell
@@ -69,6 +75,9 @@ With the launch file, we only need three steps to generate the base pbstream/pos
 ```shell
 bash autorun.sh
 ```
+Note: If you get the error `docker: Error response from daemon: could not select device driver "" with capabilities: [[gpu]].`
+install `nvidia-container-toolkit` with the following command `sudo apt-get update && sudo apt-get install -y nvidia-container-toolkit`
+
 2. launch the application with or without the args
 ```shell
 roslaunch ogm2pgbm ogm2pgbm.launch map_file:=/root/workspace/map/OGM_empty.pgm.yaml record:=true 
@@ -85,13 +94,14 @@ You can also launch **Slam_toolbox**. (There will be some error report in the te
 ```shell
 roslaunch slam_toolbox ogm2pgbm.launch bag_filename:=/root/.ros/ogm2pgbm_sensordata.bag
 ```
-
-![ogm2pgbm_posegraph](./docs/ogm2pgbm_posegraph.png)
+<p align="center">
+  <img src="./docs/ogm2pgbm_posegraph.png" alt="drawing" width="600"/>
+</p>
 
 The target pbstream file will be generated automatically at `/root/.ros/ogm2pgbm_sensordata.bag.pbstream` after . 
 For slam_toolbox, you also need to click on the serialization button on the rviz plugin. The target files are also located at `/root/.ros`.
 
-### Note
+#### Note
 1. As it is already a package managed by catkin, if you have changed the src code or configuation inside the container, you need to do the following instructions to compile and install the package and source the env.
   ```shell
   catkin_make_isolated --install --use-ninja --pkg ogm2pgbm
@@ -102,15 +112,18 @@ For slam_toolbox, you also need to click on the serialization button on the rviz
 - remap `/scan` or `/odom` in launch file if needed
 
 
-# GMCL_CARTO
-This project combines the pros of the two algorithms, using the fast global localization feature of GMCL and the accurate pose tracking performance of Cartographer.
+## GMCL & CARTO/SLAM_toolbox
+This project combines the pros of the two algorithms, using the fast global localization feature of GMCL and the accurate pose tracking performance of Cartographer or SLAM toolbox.
 
-- First, change the bagname in the line 11 of the file `~/catkin_ws/src/gmcl_carto/gmcl_carto.py`,
-- Then, make sure the bagfile is located in the directory `/root/workspace`
-- At last, run the script directly `python ~/catkin_ws/src/gmcl_carto/gmcl_carto.py`
+- First, change the bagname in the line 11 of the file `~/catkin_ws/src/gmcl_carto/gmcl_carto.py`.
+- Then, make sure the bagfile is located in the directory `/root/workspace`.
+- At last, run the script directly `python ~/catkin_ws/src/gmcl_carto/gmcl_carto.py`. 
+- Do the same if you want to run `gmcl_carto/gmcl_slamtoolbox.py` instead.
 
-# Citation
-```
+## Citation
+If you use this library for an academic work, please cite the original [paper][paper].
+
+```bibtex
 @inproceedings{ vega:2022:2DLidarLocalization,
 	author = {Vega, M. and Braun, A. and Borrmann, A.},
 	title = {Occupancy Grid Map to Pose Graph-based Map: Robust BIM-based 2D- LiDAR Localization for Lifelong Indoor Navigation in Changing and Dynamic Environments},
@@ -121,10 +134,16 @@ This project combines the pros of the two algorithms, using the fast global loca
 }
 ```
 
-# Reference Projects
+## Reference projects
 - [AMCL](http://wiki.ros.org/amcl)
 - [GMCL](http://wiki.ros.org/gmcl)
 - [Cartographer](https://github.com/cartographer-project/cartographer)
 - [SLAM_Toolbox](https://github.com/SteveMacenski/slam_toolbox)
 
+## TODO
+- [ ] Add video tutorial.
 
+<!-- References -->
+[paper]: https://publications.cms.bgu.tum.de/2022_ECPPM_Vega.pdf
+[docker]: https://docs.docker.com/get-docker/
+[docker_file]: https://github.com/MigVega/Ogm2Pgbm/blob/main/Dockerfile
