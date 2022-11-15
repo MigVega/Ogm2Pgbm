@@ -21,7 +21,7 @@ Table of Contents
 This repo contains the following application:
 
 - `OGM2PGBM`: generate pose graph-based maps on 2D occupancy grid maps (which can be created from an TLS Point cloud or a BIM/CAD model.
-This pose graph-based maps can be used for accurate localization in changing and dynamic environments as demostrated in our [paper.]{https://publications.cms.bgu.tum.de/2022_ECPPM_Vega.pdf}
+This pose graph-based maps can be used for accurate localization in changing and dynamic environments as demostrated in our [paper.](https://publications.cms.bgu.tum.de/2022_ECPPM_Vega.pdf)
 
 The following figure shows an overview of the proposed open source method.
 ![MethodSummary](./docs/MethodSummary.png)
@@ -94,8 +94,8 @@ For slam_toolbox, you also need to click on the serialization button on the rviz
 ### Note
 1. As it is already a package managed by catkin, if you have changed the src code or configuation inside the container, you need to do the following instructions to compile and install the package and source the env.
   ```shell
-  $ catkin_make_isolated --install --use-ninja --pkg ogm2pgbm
-  $ source install_isolated/setup.bash
+  catkin_make_isolated --install --use-ninja --pkg ogm2pgbm
+  source install_isolated/setup.bash
   ```
 2. All the node will be closed when the rviz is closed, including the rosbag node
 3. The parameters of cartographer when using OGM2PGBM scripts to generate pbstream are as follows (see `cartographer_ros/configuration_files/ogm2pgbm_my_robot.lua`)
