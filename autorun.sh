@@ -25,7 +25,7 @@ simulation_main() {
     fi
     docker build -t $image_name . 
     
-    docker run -it --gpus all --rm \
+    docker run -it --rm \
 	   --name $instance_name \
            -e DISPLAY=$DISPLAY \
 	   -e QT_X11_NO_MITSHM=1 \
@@ -36,12 +36,12 @@ simulation_main() {
 	   --net=host \
 	   --privileged \
 	   --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
-	   --env NVIDIA_VISIBLE_DEVICES=0 \
            --volume="$HOME/.Xauthority:/root/.Xauthority" \
 	   --volume="$(pwd)/workspace:/root/workspace" \
 	   $image_name /bin/bash
-
-    
+ 
+    #docker run -it -gpus all --rm \
+    #	   --env NVIDIA_VISIBLE_DEVICES=0 \ 
     
 }
 
