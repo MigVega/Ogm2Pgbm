@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="prefix" default="robot_"/>
+  <arg name="map_file" default="$(env HOME)/workspace/map/OGM_empty.pgm.yaml"/>
+  <arg name="record" default="false"/>
+  
+  <node name="rviz" pkg="rviz" type="rviz" required="true"
+	  args="-d $(find ogm2pgbm)/examples/ogm2pgbm.rviz" />
+
+  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" >
+    <param name="frame_id" value="robot_map"/>
+    <remap from="/map" to="/robot/map"/>
+  </node>
+
+  <node pkg="ogm2pgbm" name="trj_plnr" type="trj_plnr.py" output="screen"/>
+
+  <node pkg="rosbag" type="record" name="rosbag_record_all"
+	args="record --all -O ogm2pgbm_sensordata.bag"
+        if="$(arg record)" />
+  
+</launch>

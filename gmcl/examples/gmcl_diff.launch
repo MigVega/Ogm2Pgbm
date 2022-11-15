@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<launch>
+  <param name="/use_sim_time" value="false" />
+  <arg name="prefix" default="robot_"/>
+
+  <arg name="initial_pose_x" default="0.0"/>
+  <arg name="initial_pose_y" default="0.0"/>
+  <arg name="initial_pose_a" default="0.0"/>
+  <arg name="global_frame" default="$(arg prefix)map"/>
+  <arg name="odom_frame" default="$(arg prefix)odom"/>
+  <arg name="base_frame" default="$(arg prefix)base_footprint"/>
+
+  <arg name="map_file"/>
+  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" >
+    <param name="frame_id" value="robot_map" />
+  </node>
+
+  <node name="rviz" pkg="rviz" type="rviz" required="true"
+      args="-d $(find gmcl)/examples/gmcl.rviz" />
+
+<node pkg="gmcl" type="gmcl" name="gmcl" output="screen">
+  <!-- Publish scans from best pose at a max of 10 Hz -->
+  <remap from="scan" to="/robot/front_laser/scan"/>
+  
+  <param name="use_optimal_filter" value="true"/>
+  <param name="use_intelligent_filter" value="true"/>
+  <param name="use_self_adaptive" value="true"/> 
+  <param name="use_kld_sampling" value="true"/> 
+  
+  <param name="N_aux_particles" value="10"/>
+  
+  <param name="crossover_alpha" value=".5"/>
+  <param name="mutation_probability" value="0.1"/>
+    
+  <param name="energy_map_resolution_x" value="0.05"/>
+  <param name="energy_map_resolution_y" value="0.05"/>
+  <param name="energy_threshold_value" value="0.05"/>
+  <param name="publish_ser" value="false"/>
+
+  <param name="odom_model_type" value="diff"/> 
+     
+  <param name="initial_pose_x"            value="$(arg initial_pose_x)"/>
+  <param name="initial_pose_y"            value="$(arg initial_pose_y)"/> 
+  <param name="initial_pose_a"            value="$(arg initial_pose_a)"/>
+  
+  <param name="transform_tolerance" value="0.1" />
+  <param name="gui_publish_rate" value="2.0"/>
+  <param name="laser_max_beams" value="30"/>
+  <param name="min_particles" value="500"/>
+  <param name="max_particles" value="2000"/>
+  <param name="kld_err" value="0.01"/>
+  <param name="kld_z" value="0.99"/>
+ 
+  <param name="odom_alpha1" value="0.2"/>
+  <param name="odom_alpha2" value="0.2"/>
+  <param name="odom_alpha3" value="0.8"/>
+  <param name="odom_alpha4" value="0.2"/>
+  <param name="laser_z_hit" value="0.5"/>
+  <param name="laser_z_short" value="0.05"/>
+  <param name="laser_z_max" value="0.05"/>
+  <param name="laser_z_rand" value="0.5"/>
+  <param name="laser_sigma_hit" value="0.2"/>
+  <param name="laser_lambda_short" value="0.1"/>
+     
+  <param name="laser_model_type" value="likelihood_field"/> 
+<!--   <param name="laser_model_type" value="beam"/>  -->
+  <param name="laser_likelihood_max_dist" value="2.5"/>
+  <param name="update_min_d" value="0.2"/>
+  <param name="update_min_a" value="0.5"/>
+  <param name="global_frame_id" value="$(arg global_frame)"/>
+  <param name="odom_frame_id" value="$(arg odom_frame)"/>
+  <param name="base_frame_id" value="$(arg base_frame)"/>
+
+  <param name="resample_interval" value="1"/>
+  <param name="transform_tolerance" value="0.1"/>
+  <param name="recovery_alpha_slow" value="0.0"/>
+  <param name="recovery_alpha_fast" value="0.0"/>
+  <param name="selective_resampling" value="false"/> 
+  
+</node>
+</launch>

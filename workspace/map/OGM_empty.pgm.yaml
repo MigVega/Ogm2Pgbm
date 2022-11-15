@@ -1,0 +1,7 @@
+image: OGM_empty.pgm
+resolution: 0.035323
+origin: [-13.1000, -15.400000, 0.000000]
+negate: 0
+occupied_thresh: 0.8
+free_thresh: 0.1
+

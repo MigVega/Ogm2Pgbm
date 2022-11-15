@@ -1,0 +1,14 @@
+<launch>
+
+  <param name="use_sim_time" value="true"/>
+  <node name="playbag" pkg="rosbag" type="play"
+      args="$(arg bag_filename)" />
+
+  <node pkg="slam_toolbox" type="localization_slam_toolbox_node" name="slam_toolbox" output="screen">
+    <rosparam command="load" file="$(find slam_toolbox)/config/mapper_params_localization.yaml" />
+  </node>
+
+  <node name="rviz" pkg="rviz" type="rviz" required="true"
+      args="-d $(find slam_toolbox)/config/slam_toolbox_default.rviz" />
+
+</launch>

@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<launch>
+  <param name="/use_sim_time" value="false" />
+  <arg name="prefix" default="robot_"/>
+  
+  <arg name="x_init_pose" default="0"/>
+  <arg name="y_init_pose" default="0"/>
+  <arg name="z_init_pose" default="0"/>
+  <arg name="scan_topic" default="/robot/front_laser/scan"/>
+  <arg name="map_topic" default="map"/>
+  <arg name="global_frame" default="$(arg prefix)map"/>
+  <arg name="odom_frame" default="$(arg prefix)odom"/>
+  <arg name="base_frame" default="$(arg prefix)base_footprint"/>
+  <arg name="odom_model_type" default="omni"/> <!-- omni -->
+
+  <arg name="map_file"/>
+  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" >
+    <param name="frame_id" value="robot_map" />
+  </node>
+
+  <node name="rviz" pkg="rviz" type="rviz" required="true"
+      args="-d $(find amcl)/examples/amcl.rviz" />
+
+  <node pkg="amcl" type="amcl" name="amcl" output="screen">
+    <remap from="scan" to="$(arg scan_topic)"/>
+    <remap from="map" to="$(arg map_topic)"/>
+
+    <rosparam command="load" file="$(find amcl)/examples/amcl.yaml" subst_value="true"/>
+
+  </node>
+  
+<node name="playbag" pkg="rosbag" type="play"
+      args="$(arg bag_filename)" />
+
+<node pkg="rosservice" type="rosservice" name="global_loc" args="call --wait /global_localization" launch-prefix="bash -c 'sleep 1; $0 $@' " />
+
+</launch>
