@@ -12,8 +12,9 @@ Table of Contents
    * [Usage](#usage)
       * [Args](#args)
       * [Step by step](#step-by-step)
-      * [Note](#note-1)
+      * [Note](#note)
 * [GMCL_CARTO](#gmcl_carto)
+* [Citation](#citation)
 
 # Intro
 
@@ -101,6 +102,13 @@ For slam_toolbox, you also need to click on the serialization button on the rviz
 - remap `/scan` or `/odom` in launch file if needed
 
 
+# GMCL_CARTO
+This project combines the pros of the two algorithms, using the fast global localization feature of GMCL and the accurate pose tracking performance of Cartographer.
+
+- First, change the bagname in the line 11 of the file `~/catkin_ws/src/gmcl_carto/gmcl_carto.py`,
+- Then, make sure the bagfile is located in the directory `/root/workspace`
+- At last, run the script directly `python ~/catkin_ws/src/gmcl_carto/gmcl_carto.py`
+
 # Citation
 ```
 @inproceedings{ vega:2022:2DLidarLocalization,
@@ -112,16 +120,11 @@ For slam_toolbox, you also need to click on the serialization button on the rviz
 	url = {https://publications.cms.bgu.tum.de/2022_ECPPM_Vega.pdf},
 }
 ```
-# GMCL_CARTO
-This project combines the pros of the two algorithms, using the fast global localization feature of GMCL and the accurate pose tracking performance of Cartographer.
-
-- First, change the bagname in the line 11 of the file `~/catkin_ws/src/gmcl_carto/gmcl_carto.py`,
-- Then, make sure the bagfile is located in the directory `/root/workspace`
-- At last, run the script directly `python ~/catkin_ws/src/gmcl_carto/gmcl_carto.py`
 
 # Reference Projects
-- [AMCL]{http://wiki.ros.org/amcl}
-- [GMCL]{http://wiki.ros.org/gmcl}
-- [SLAM_Toolbox]{https://github.com/SteveMacenski/slam_toolbox}
-- [Cartographer]{https://github.com/cartographer-project/cartographer}
+- [AMCL](http://wiki.ros.org/amcl)
+- [GMCL](http://wiki.ros.org/gmcl)
+- [Cartographer](https://github.com/cartographer-project/cartographer)
+- [SLAM_Toolbox](https://github.com/SteveMacenski/slam_toolbox)
+
 
