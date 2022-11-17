@@ -1,3 +1,4 @@
+ [![DOI](https://zenodo.org/badge/513174972.svg)](https://zenodo.org/badge/latestdoi/513174972)
 # OGM2PGBM: Occupancy Grid Map to Pose Graph-based Map for long-term 2D LiDAR-based localization
 
 This repo contains the following two applications:
@@ -133,7 +134,9 @@ If you use this library for an academic work, please cite the original [paper][p
 	url = {https://publications.cms.bgu.tum.de/2022_ECPPM_Vega.pdf},
 }
 ```
-
+Please cite also the code:
+<a href="https://zenodo.org/badge/latestdoi/513174972"><img src="https://zenodo.org/badge/513174972.svg" alt="DOI"></a>
+   
 ## Reference projects
 - [AMCL](http://wiki.ros.org/amcl)
 - [GMCL](http://wiki.ros.org/gmcl)
