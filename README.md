@@ -18,7 +18,7 @@ Additionally, it includes  the packages `amcl`, `gmcl`, `cartographer` and `slam
 
 ## Table of Contents
 ==================================
-- [Requirements: Install docker](#requirements-install-docker)
+- [Requirements](#requirements)
 * [OGM2PGBM](#ogm2pgbm)
    * [Principle](#principle)
    * [Running the code](#running-the-code)
@@ -30,12 +30,14 @@ Additionally, it includes  the packages `amcl`, `gmcl`, `cartographer` and `slam
 * [Reference projects](#reference-projects)
 
 
-## Requirements: Install docker
+## Requirements
 
-If you plan to use our docker container you only need to
+If you plan to use our docker container, with all the methods installed (Warning: it requires >5 GB of space) you only need to
 install [docker][docker].
 
-If you **don't want to use docker** and you might see the content of the [docker file][docker_file] and install the respective dependencies on your local machine.
+If you **don't want to use docker** and only want to use the Ogm2Pgbm package, you can install the content of [this folder](https://github.com/MigVega/Ogm2Pgbm/tree/main/ogm2pgbm) and use it as a normal catkin package.
+
+If you still want to insall all the different localization methods, you can have a look at the [docker file][docker_file] and install the respective dependencies on your local machine.
 
 ## OGM2PGBM
 
