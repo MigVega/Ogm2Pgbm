@@ -145,8 +145,7 @@ Please cite also the code:
 - [Cartographer](https://github.com/cartographer-project/cartographer)
 - [SLAM_Toolbox](https://github.com/SteveMacenski/slam_toolbox)
 
-## TODO
-- [ ] Add video tutorial.
+
 
 <!-- References -->
 [paper]: https://publications.cms.bgu.tum.de/2022_ECPPM_Vega.pdf
