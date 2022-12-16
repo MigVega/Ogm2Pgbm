@@ -130,10 +130,13 @@ If you use this library for an academic work, please cite the original [paper][p
 @inproceedings{ vega:2022:2DLidarLocalization,
 	author = {Vega, M. and Braun, A. and Borrmann, A.},
 	title = {Occupancy Grid Map to Pose Graph-based Map: Robust BIM-based 2D- LiDAR Localization for Lifelong Indoor Navigation in Changing and Dynamic Environments},
-	booktitle = {Proc. of European Conference on Product and Process Modeling 2022},
+	booktitle = {eWork and eBusiness in Architecture, Engineering and Construction: ECPPM 2022},
+	editor = {Eilif Hjelseth, Sujesh F. Sujan & Raimar Scherer},
+	publisher = {CRC Press},
 	year = {2022},
 	month = {Sep},
 	url = {https://publications.cms.bgu.tum.de/2022_ECPPM_Vega.pdf},
+	isbn = {978-1-003-35422-2}
 }
 ```
 Please cite also the code:
