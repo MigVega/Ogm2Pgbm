@@ -131,7 +131,7 @@ If you use this library for an academic work, please cite the original [paper][p
 	author = {Vega Torres, M.A. and Braun, A. and Borrmann, A.},
 	title = {Occupancy Grid Map to Pose Graph-based Map: Robust BIM-based 2D- LiDAR Localization for Lifelong Indoor Navigation in Changing and Dynamic Environments},
 	booktitle = {eWork and eBusiness in Architecture, Engineering and Construction: ECPPM 2022},
-	editor = {Eilif Hjelseth, Sujesh F. Sujan & Raimar Scherer},
+	editor = {Eilif Hjelseth, Sujesh F. Sujan, and Raimar Scherer},
 	publisher = {CRC Press},
 	year = {2022},
 	month = {Sep},
@@ -139,7 +139,7 @@ If you use this library for an academic work, please cite the original [paper][p
 	isbn = {978-1-003-35422-2}
 }
 ```
-Please cite also the code:
+Please also cite the code:
 <a href="https://zenodo.org/badge/latestdoi/513174972"><img src="https://zenodo.org/badge/513174972.svg" alt="DOI"></a>
    
 ## Reference projects
