@@ -6,10 +6,11 @@ This repo contains the following two applications:
 1. `OGM2PGBM`: generate pose graph-based maps on 2D occupancy grid maps, which can be created from a TLS Point cloud or a BIM/CAD model.
 This pose graph-based maps can be used for accurate localization in changing and dynamic environments, as demostrated in our [paper][paper].
 
-The following figure shows an overview of the proposed open source method.
-<p align="center">
-  <img src="./docs/MethodSummary.png" alt="drawing" width="600"/>
-</p>
+The following animation shows an overview of the method and compares AMCL and Cartographer; the latter can be applied after leveraging the Ogm2Pgbm package.
+It is clear that for AMCL is more difficult to keep track of the pose of the robot in comparison with the performance of Cartographer.
+<div align="center">
+<img src="https://github.com/MigVega/Ogm2Pgbm/blob/main/docs/Ogm2Pgbm_amcl_vs_carto.gif" alt="video" width="800" />
+</div>
 
 2. `GMCL & CARTO/SLAM_toolbox`: conbine the fast global localization feature of GMCL with the more accurate pose tracking performance of Cartographer/SLAM_toolbox
 
