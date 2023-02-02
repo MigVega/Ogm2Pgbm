@@ -33,12 +33,12 @@ Additionally, it includes  the packages `amcl`, `gmcl`, `cartographer` and `slam
 
 ## Requirements
 
-If you plan to use our docker container, with all the methods installed (Warning: it requires >5 GB of space) you only need to
+If you plan to use our docker container, with all the methods installed (**Warning:** it requires >5 GB of space) you only need to
 install [docker][docker].
 
 If you **don't want to use docker** and only want to use the Ogm2Pgbm package, you can install the content of [this folder](https://github.com/MigVega/Ogm2Pgbm/tree/main/ogm2pgbm) and use it as a normal catkin package.
 
-If you still want to insall all the different localization methods, you can have a look at the [docker file][docker_file] and install the respective dependencies on your local machine.
+If you still want to install all the different localization methods, you can have a look at the [docker file][docker_file] and install the respective dependencies on your local machine.
 
 ## OGM2PGBM
 
@@ -79,7 +79,7 @@ With the launch file, we only need three steps to generate the base pbstream/pos
 ```shell
 bash autorun.sh
 ```
-Note: If you get the error `docker: Error response from daemon: could not select device driver "" with capabilities: [[gpu]].`
+**Note:** If you get the error `docker: Error response from daemon: could not select device driver "" with capabilities: [[gpu]].`
 install `nvidia-container-toolkit` with the following command `sudo apt-get update && sudo apt-get install -y nvidia-container-toolkit`
 
 2. launch the application with or without the args
