@@ -137,7 +137,8 @@ If you use this library for an academic work, please cite the original [paper][p
 	year = {2022},
 	month = {Sep},
 	url = {https://publications.cms.bgu.tum.de/2022_ECPPM_Vega.pdf},
-	isbn = {978-1-003-35422-2}
+	isbn = {978-1-003-35422-2},
+	doi = {10.1201/9781003354222-72}
 }
 ```
 Please also cite the code:
