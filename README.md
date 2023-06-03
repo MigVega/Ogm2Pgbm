@@ -145,7 +145,7 @@ Please also cite the code, if you use it for your experiments:
 <a href="https://zenodo.org/badge/latestdoi/513174972"><img src="https://zenodo.org/badge/513174972.svg" alt="DOI"></a>
 ```bibtex
 @software{miguel_vega_2022_7330270,
-  author       = {Miguel Vega},
+  author       = {Vega Torres, M.A.},
   title        = {{Occupancy Grid Map to Pose Graph-based Map for 
                    long-term 2D LiDAR-based localization}},
   month        = nov,
