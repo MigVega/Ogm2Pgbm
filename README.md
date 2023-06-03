@@ -141,9 +141,21 @@ If you use this library for an academic work, please cite the original [paper][p
 	doi = {10.1201/9781003354222-72}
 }
 ```
-Please also cite the code:
+Please also cite the code, if you use it for your experiments:
 <a href="https://zenodo.org/badge/latestdoi/513174972"><img src="https://zenodo.org/badge/513174972.svg" alt="DOI"></a>
-   
+```bibtex
+@software{miguel_vega_2022_7330270,
+  author       = {Miguel Vega},
+  title        = {{Occupancy Grid Map to Pose Graph-based Map for 
+                   long-term 2D LiDAR-based localization}},
+  month        = nov,
+  year         = 2022,
+  publisher    = {Zenodo},
+  version      = {1.0},
+  doi          = {10.5281/zenodo.7330270},
+  url          = {https://doi.org/10.5281/zenodo.7330270}
+}  
+```
 ## Reference projects
 - [AMCL](http://wiki.ros.org/amcl)
 - [GMCL](http://wiki.ros.org/gmcl)
