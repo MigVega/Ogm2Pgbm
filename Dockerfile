@@ -1,4 +1,4 @@
-FROM osrf/ros:melodic-desktop-full
+FROM docker.io/osrf/ros:melodic-desktop-full
 
 ARG user_home=/root
 ARG ck_dir=$user_home/catkin_ws
@@ -12,29 +12,28 @@ RUN true \
         && mkdir -p $ck_dir
 
 # install cartographer according to the page(https://google-cartographer-ros.readthedocs.io/en/latest/compilation.html)
-RUN apt-get update \
-    && apt-get install -y ninja-build stow vim ros-melodic-map-server 
-
+RUN apt-get update && apt-get install -y \
+    git \
+    ninja-build \
+    stow \
+    vim \
+    ros-melodic-map-server \
+    sudo \
+    && rm -rf /var/lib/apt/lists/*
 
 WORKDIR $ck_dir
-#-----
-#RUN wstool init src \
-#    && wstool merge -t src https://raw.githubusercontent.com/cartographer-project/cartographer_ros/master/cartographer_ros.rosinstall \
-#    && wstool update -t src 
-#-----
-# Instead of directly cloning using modified vecrsion
-RUN apt-get update && \
-    apt-get upgrade -y && \
-    apt-get install -y git
 
 ADD cartographer_git $ck_dir
 #-----
 
-RUN sudo rosdep fix-permissions \   
-    && rosdep update \
-    && rosdep install --from-paths src --ignore-src --rosdistro=${ROS_DISTRO} -y 
+RUN apt-get update && \
+    sudo rosdep fix-permissions \
+    && rosdep update --include-eol-distros \
+    && rosdep install --from-paths src --ignore-src --rosdistro=${ROS_DISTRO} -y \
+    && rm -rf /var/lib/apt/lists/*
+
 RUN ./src/cartographer/scripts/install_abseil.sh \
-    && . /opt/ros/melodic/setup.sh \ 
+    && . /opt/ros/melodic/setup.sh \
     && catkin_make_isolated --install --use-ninja
 
 ADD cartographer_ros $ck_dir/src/cartographer_ros/cartographer_ros
@@ -55,7 +54,7 @@ RUN cd src \
 
 ADD gmcl $ck_dir/src/gmcl
 ADD amcl $ck_dir/src/navigation/amcl
-RUN . /opt/ros/melodic/setup.sh \ 
+RUN . /opt/ros/melodic/setup.sh \
     && apt-get update && apt-get install -y ros-melodic-costmap-2d \
     && mv src/navigation/amcl src \
     && rm -rf src/navigation \
