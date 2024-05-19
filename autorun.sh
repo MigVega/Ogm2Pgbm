@@ -1,5 +1,5 @@
-image_name=carto-test
-instance_name=carto-instance-test
+image_name=lihanchen2004/ogm2pgbm:latest
+instance_name=ogm2pgbm
 
 check_docker_instance_already_running() {
     if  [ ! "$(docker ps -a | grep $instance_name)" ]; then
@@ -23,26 +23,24 @@ simulation_main() {
             return 1
         fi
     fi
-    docker build -t $image_name . 
+    # docker build -t $image_name . 
     
     docker run -it --rm \
-	   --name $instance_name \
-           -e DISPLAY=$DISPLAY \
-	   -e QT_X11_NO_MITSHM=1 \
-	   --device=/dev/dri \
-	   --group-add video \
-	   --device=/dev/snd:/dev/snd \
-	   --group-add audio \
-	   --net=host \
-	   --privileged \
-	   --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
-           --volume="$HOME/.Xauthority:/root/.Xauthority" \
-	   --volume="$(pwd)/workspace:/root/workspace" \
-	   $image_name /bin/bash
- 
-    #docker run -it -gpus all --rm \
-    #	   --env NVIDIA_VISIBLE_DEVICES=0 \ 
-    
+        --name $instance_name \
+        --gpus all \
+        --env NVIDIA_DRIVER_CAPABILITIES=all \
+        --env DISPLAY=${DISPLAY} \
+        --env QT_X11_NO_MITSHM=1 \
+        --device=/dev/dri \
+        --group-add video \
+        --device=/dev/snd:/dev/snd \
+        --group-add audio \
+        --net=host \
+        --privileged \
+        --volume /tmp/.X11-unix:/tmp/.X11-unix \
+        --volume="$HOME/.Xauthority:/root/.Xauthority" \
+        --volume="$(pwd)/workspace:/root/workspace" \
+        $image_name /bin/zsh    
 }
 
 simulation_main
