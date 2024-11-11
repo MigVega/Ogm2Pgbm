@@ -1,6 +1,58 @@
-[![DOI](https://zenodo.org/badge/513174972.svg)](https://zenodo.org/badge/latestdoi/513174972)
 
-# OGM2PGBM: Occupancy Grid Map to Pose Graph-based Map for long-term 2D LiDAR-based localization
+<h1 align="center" style="border-bottom: none">
+    <b>
+        ⭐️ OGM2PGBM ⭐️ <br>
+	      Occupancy Grid Map to Pose Graph-based Map for long-term 2D LiDAR-based localization
+    </b>
+
+ </h1>
+
+<p align="center">
+Achieve a 78% improvement in real-time localization accuracy by transitioning from classical particle filter methods to robust pose graph-based algorithms using OGM2PGBM. This approach enables you to leverage any existing 2D reference map for enhanced precision and reliability.
+</p>
+
+
+
+[//]: # (####  [![CMake on a single platform]&#40;https://github.com/MigVega/SLAM2REF/actions/workflows/cmake-single-platform.yml/badge.svg&#41;]&#40;https://github.com/MigVega/SLAM2REF/actions/workflows/cmake-single-platform.yml)
+
+
+<p align="center">
+    <a href="https://arxiv.org/abs/2308.05443"><b>ArXiv Paper</b></a>  •
+    <a href="https://mediatum.ub.tum.de/1749236"><b>Data</b></a>
+</p>
+
+[//]: # (TODO add link to video, maybe linked in post)
+[//]: <a href="https://youtu.be/5WgPRRijI4Y">
+[//]:  <img src="https://img.shields.io/youtube/views/d_-ZYJhgGIk?label=YouTube&style=flat" alt="YouTube">
+[//]: </a>
+[//]:<img src="https://img.shields.io/badge/C++-Solutions-blue.svg?style=flat&logo=c%2B%2B" alt="C++">
+[//]: # (TODO Add test -> docker file)
+[//]:<a href="https://github.com/MigVega/Ogm2Pgbm/actions/workflows/cmake-single-platform.yml">
+[//]:      <img src="https://github.com/MigVega/Ogm2Pgbm/actions/workflows/cmake-single-platform.yml/badge.svg" alt="Build">
+[//]: </a>
+[//]:  [![DOI](https://zenodo.org/badge/513174972.svg)](https://zenodo.org/badge/latestdoi/513174972)
+   
+<p align="center">
+
+  <a href="https://arxiv.org/abs/2408.15948">
+    <img src="https://img.shields.io/badge/arXiv-2308.05443-%23B31C1B?style=flat" alt="arxiv">
+  </a>
+
+<a href="https://doi.org/10.5281/zenodo.513174972">
+    <img src="https://zenodo.org/badge/513174972.svg" alt="DOI">
+</a>
+
+  <img src="https://img.shields.io/github/license/MigVega/Ogm2Pgbm" alt="License">
+  <a href="https://github.com/MigVega/SLAM2REF">
+    <img src="https://img.shields.io/github/stars/MigVega/Ogm2Pgbm.svg?style=flat&logo=github&colorB=deeppink&label=stars" alt="GitHub stars">
+  </a>
+  <a href="https://github.com/MigVega/SLAM2REF">
+    <img src="https://img.shields.io/github/forks/MigVega/Ogm2Pgbm" alt="GitHub forks">
+  </a>
+  <a href="https://github.com/MigVega/SLAM2REF">
+    <img src="https://img.shields.io/github/issues/MigVega/Ogm2Pgbm" alt="GitHub issues">
+  </a>
+</p>
 
 This repo contains the following two applications:
 
@@ -486,7 +538,7 @@ This project combines the pros of the two algorithms, using the fast global loca
 If you use this library for an academic work, please cite the original [paper][paper].
 
 ```bibtex
-@inproceedings{ vega:2022:2DLidarLocalization,
+@inproceedings{ ogm2pgbm:vega:2022:2DLidarLocalization,
     author = {Vega Torres, M.A. and Braun, A. and Borrmann, A.},
     title = {Occupancy Grid Map to Pose Graph-based Map: Robust BIM-based 2D- LiDAR Localization for Lifelong Indoor Navigation in Changing and Dynamic Environments},
     booktitle = {eWork and eBusiness in Architecture, Engineering and Construction: ECPPM 2022},
@@ -500,11 +552,11 @@ If you use this library for an academic work, please cite the original [paper][p
 }
 ```
 
-Please also cite the code, if you use it for your experiments:
+Please also cite the code and data, if you use it for your experiments:
 [![DOI](https://zenodo.org/badge/513174972.svg)](https://zenodo.org/badge/latestdoi/513174972)
 
 ```bibtex
-@software{miguel_vega_2022_7330270,
+@software{ogm2pgbm:vega:code,
   author       = {Vega Torres, M.A.},
   title        = {{Occupancy Grid Map to Pose Graph-based Map for
                    long-term 2D LiDAR-based localization}},
@@ -514,6 +566,16 @@ Please also cite the code, if you use it for your experiments:
   version      = {1.0},
   doi          = {10.5281/zenodo.7330270},
   url          = {https://doi.org/10.5281/zenodo.7330270}
+}
+
+
+@misc{ogm2pgbm:vega:data,
+	author = {Vega-Torres, Miguel A. and  Braun, Alexander and  Borrmann, André},
+	title = {{OGM2PGBM}},
+	year = {2024},
+	type = {Dataset},
+	keywords = {LiDAR; Localization; SLAM; OGM; BIM},
+	doi = {10.14459/2024mp1749236}
 }
 ```
 
